@@ -7,32 +7,34 @@ include "banner.php";
 
     <div class="row mb-5">
 
-    <?php
-    /*Conexão com o BD*/
-    $servidor = "localhost";
-    $bd = "movieflix";
-    $usuario = "root";
-    $senha = "";
+        <?php
+        /*Conexão com o BD*/
+        $servidor = "localhost";
+        $bd = "movieflix";
+        $usuario = "root";
+        $senha = "";
 
-    $conexao = mysqli_connect($servidor, $usuario, $senha, $bd);
-    if(!$conexao){
-        die("Não conectado".mysqli_connect_error());
-    }
-    echo "Conectado";
+        $conexao = mysqli_connect($servidor, $usuario, $senha, $bd);
+        if (!$conexao) {
+            die("Não conectado" . mysqli_connect_error());
+        }
 
-    ?>
+        $sql = "select * from filmes";
+        $resultado = mysqli_query($conexao, $sql);
 
-        <div class="col-3 mb-4">
-            <div class="card" style="width: 18rem;">
-                <img src="img/filme1.webp" class="card-img-top img-formatada">
-                <div class="card-body">
-                    <h5 class="card-title">Jurassic Park</h5>
-                    <p class="card-text">⭐ 10/10</p>
-                    <a href="#" class="btn btn-primary">Veja Detalhes</a>
-                </div>
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+        ?>
+            <div class="col-3 mb-5">
+                <img src="<?= $linha['foto']; ?>" class="img-fluid img-formatada">
+                <h3><?= $linha['titulo']; ?></h3>
+                <span>⭐<?= $linha['avaliacao']; ?>/10</span>
             </div>
-        </div>
-        
+        <?php
+        }
+
+        ?>
+
+
     </div>
 
     <div class="row">
