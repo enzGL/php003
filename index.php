@@ -8,23 +8,13 @@ include "banner.php";
     <div class="row mb-5">
 
         <?php
-        /*Conexão com o BD*/
-        $servidor = "localhost";
-        $bd = "movieflix";
-        $usuario = "root";
-        $senha = "";
-
-        $conexao = mysqli_connect($servidor, $usuario, $senha, $bd);
-        if (!$conexao) {
-            die("Não conectado" . mysqli_connect_error());
-        }
-
-        $sql = "select * from filmes";
+        include "conexao.php";
+        $sql = "select * from filmes order by avaliacao desc limit 4";
         $resultado = mysqli_query($conexao, $sql);
 
         while ($linha = mysqli_fetch_assoc($resultado)) {
         ?>
-            <div class="col-3 mb-5">
+            <div class="col-3 mb-5 text-center">
                 <img src="<?= $linha['foto']; ?>" class="img-fluid img-formatada">
                 <h3><?= $linha['titulo']; ?></h3>
                 <span>⭐<?= $linha['avaliacao']; ?>/10</span>
@@ -32,6 +22,7 @@ include "banner.php";
         <?php
         }
 
+        mysqli_close($conexao);
         ?>
 
 

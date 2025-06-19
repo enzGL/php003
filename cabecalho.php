@@ -12,9 +12,9 @@
         <img src="img/logo.png" class="logo" height="150">
         <h1>MovieFlix</h1>
         <nav>
-            <a href="index.php">Home</a>
-            <a href="listadefilmes.php">Filmes</a>
-            <a href="listadenoticias.php">Notícias</a>
-            <a href="contato.php">Contato</a>
+            <a href="index.php" class="btn btn-primary col-1">Home</a>
+            <a href="listadefilmes.php" class="btn btn-primary col-1">Filmes</a>
+            <a href="listadenoticias.php" class="btn btn-primary col-1">Notícias</a>
+            <a href="contato.php" class="btn btn-primary col-1">Contato</a>
         </nav>
     </header>
