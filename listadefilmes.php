@@ -19,7 +19,7 @@ include "cabecalho.php";
                     <div class="card-body">
                         <h5 class="card-title"><?= $linha['titulo']; ?></h5>
                         <p class="card-text">⭐ <?= $linha['avaliacao']; ?>/10</p>
-                        <a href="umfilme.php?id=<?= $linha['id'] ?>" class="btn btn-primary">Veja Detalhes</a>
+                        <a href="umfilme.php?id=<?= $linha['id'];?>" class="btn btn-primary">Veja Detalhes</a>
                     </div>
                 </div>
             </div>

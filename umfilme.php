@@ -1,26 +1,37 @@
 <?php
 include "cabecalho.php";
+
 ?>
 <div class="container">
     <?php
-    include "conexao.php";
-    $sql = "SELECT * FROM filmes WHERE id = $id";
-    $resultado = mysqli_query($conexao, $sql);
+    include "conexao.php"; //Conexão com bd
+    $sql = "SELECT * FROM filmes WHERE id = $id"; //Montar sql
+    $resultado = mysqli_query($conexao, $sql); //Execução do slq
 
-    while ($linha = mysqli_fetch_assoc($resultado)) {
+    while ($linha = mysqli_fetch_assoc($resultado)) { //Laço com as infos do filme
+        $foto = $linha['foto'];
+        $nome = $linha['titulo'];
+        $avaliacao = $linha['avaliacao'];
+        $categoria = $linha['categoria'];
+        $historia = $linha['historia'];
     ?>
-        <div class="card mx-auto d-block mt-3" style="width: 18rem;">
-            <img src="<?= $linha['foto']; ?>" class="card-img-top">
-            <div class="card-body">
-                <h2 class="card-text"><?= $linha['titulo']; ?></h2>
-                <p>⭐ <?= $linha['avaliacao']; ?>/10</p>
-                <p><strong>Categoria: </strong><?= $linha['categoria']; ?></p>
-                <p><strong>História: </strong><?= $linha['historia']; ?></p>
+
+        <div class="container">
+            <div class="row mx-5 mt-5">
+                <div class="col">
+                    <img src="<?= $foto ?>" class="img-fluid" style="max-width: 500px">
+                </div>
+                <div class="col text-center fs-3" style="margin-top: 100px;">
+                        <h5 class="fs-1"><?= $nome ?></h5>
+                        <p>⭐ <?= $avaliacao ?>/10</p>
+                        <p>Categoria: <?= $categoria ?></p>
+                        <p>Historia: <?= $historia ?></p>
+                </div>
             </div>
         </div>
     <?php
     }
-    mysqli_close($conexao);
+    mysqli_close($conexao); //Fechar a conexão com bd
     ?>
 </div>
 <?php include "rodape.php"; ?>
